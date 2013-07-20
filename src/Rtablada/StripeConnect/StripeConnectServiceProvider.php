@@ -18,7 +18,10 @@ class StripeConnectServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['Rtablada\StripeConnectInterface'] = $this->app->share(function($app)
+        {
+            return new StripeConnect($app->make('config'));
+        });
 	}
 
 	/**
