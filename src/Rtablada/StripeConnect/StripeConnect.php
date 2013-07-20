@@ -13,7 +13,7 @@ class StripeConnect
 	{
 		$this->config = $config;
 		$this->attributes = array(
-			'client_secret' => $this->config->get('stripe.app_client_id'),
+			'client_secret' => $this->config->get('stripe.secret_key'),
 			'grant_type' => 'authorization_code',
 		);
 	}
@@ -25,7 +25,7 @@ class StripeConnect
 
 	public function getToken()
 	{
-		$poster = new SlimPost($url, $this->attributes);
+		$poster = new SlimPost($this->url, $this->attributes);
 
 		return json_decode($poster->send(), true);
 	}
