@@ -24,7 +24,9 @@ class StripeConnect
 
 	public function getToken()
 	{
-		$poster = new SlimPost()
+		$poster = new SlimPost($url, $this->attributes);
+
+		return json_decode($poster->send(), true);
 	}
 
 	public function getTokenWithCode($code)
