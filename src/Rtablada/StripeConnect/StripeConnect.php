@@ -11,6 +11,7 @@ class StripeConnect
 
 	public function __construct(Config $config)
 	{
+		$this->config = $config;
 		$this->attributes = array(
 			'client_secret' => $this->config->get('stripe.app_client_id'),
 			'grant_type' => 'authorization_code',
